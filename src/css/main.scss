@@ -1,1 +1,489 @@
 /* Your SCSS here. */
+
+$black: #0b0b0b;
+$espresso: #2b1e1a;
+$coffee: #6f4e37;
+$gold: #c8a960;
+$cream: #f5efe6;
+$muted: #daccb6;
+
+$border: #3a2a23;
+
+$nav-h-big: 86px;
+$nav-h-small: 60px;
+$page-max: 1100px;
+
+$stripe-bg: (
+  s1: #0f0d0c,
+  s2: #1a1411,
+  s3: #201712,
+  s4: #241a14,
+);
+
+@function clamp-fluid($min, $preferred, $max) {
+  @if length($preferred) > 1 {
+    $preferred: add-calc(nth($preferred, 1), nth($preferred, 2));
+  }
+  @return clamp(#{$min}, #{$preferred}, #{$max});
+}
+
+@mixin focus-ring($color, $offset: 2px, $width: 3px) {
+  outline: $width solid $color;
+  outline-offset: $offset;
+}
+
+@mixin underline-reveal($offset: 0.35em) {
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: $offset;
+  transition: color 0.2s ease, border-color 0.2s ease,
+    text-underline-offset 0.2s ease;
+  &:hover,
+  &:focus-visible {
+    text-decoration-color: currentColor;
+  }
+}
+
+@mixin glassy($bg: $black, $alpha: 0.8, $blur: 8px) {
+  background: rgba(red($bg), green($bg), blue($bg), $alpha);
+  backdrop-filter: blur($blur);
+}
+
+@mixin fixed-bg($url) {
+  background-image: url(#{$url});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+:root {
+  --black: #{$black};
+  --espresso: #{$espresso};
+  --coffee: #{$coffee};
+  --gold: #{$gold};
+  --cream: #{$cream};
+  --muted: #{$muted};
+
+  --nav-h-big: #{$nav-h-big};
+  --nav-h-small: #{$nav-h-small};
+  --page-max: #{$page-max};
+
+  --nav-bg: #{rgba($black, 0.8)};
+  --link: #{$muted};
+  --link-active: #{$cream};
+  --border: #{$border};
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  &::before {
+    box-sizing: border-box;
+  }
+  &::after {
+    box-sizing: border-box;
+  }
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+picture {
+  display: block;
+  max-width: 100%;
+}
+video {
+  display: block;
+  max-width: 100%;
+}
+canvas {
+  display: block;
+  max-width: 100%;
+}
+svg {
+  display: block;
+  max-width: 100%;
+}
+input {
+  font: inherit;
+}
+button {
+  font: inherit;
+}
+textarea {
+  font: inherit;
+}
+select {
+  font: inherit;
+}
+p {
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+h1 {
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+h2 {
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+h3 {
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+h4 {
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+h5 {
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+h6 {
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+#root {
+  isolation: isolate;
+}
+#__next {
+  isolation: isolate;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  background: var(--black);
+  color: var(--cream);
+  font-family: "Playfair", sans-serif;
+}
+
+.navbar {
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr 3px;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 2rem;
+  height: var(--nav-h-big);
+  @include glassy($black, 0.8, 8px);
+  border-bottom: 1px solid var(--border);
+  transition: height 0.25s ease, background-color 0.25s ease;
+}
+
+.navbar.shrink {
+  height: var(--nav-h-small);
+  font-size: 1rem;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  color: var(--cream);
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.navbar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-self: end;
+  display: flex;
+  gap: clamp(0.75rem, 2vw, 2rem);
+  align-items: center;
+}
+
+.navbar-list a {
+  color: var(--link);
+  text-decoration: none;
+  padding: 0.35rem 0;
+  border-bottom: 2px solid transparent;
+  @include underline-reveal(0.35em);
+}
+
+.navbar-list a:hover,
+.navbar-list a:focus-visible {
+  color: var(--link-active);
+  text-decoration-color: currentColor;
+}
+.navbar-list a.active {
+  color: var(--link-active);
+  border-color: var(--gold);
+}
+
+.progress {
+  grid-column: 1 / -1;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--coffee));
+  border-radius: 999px;
+}
+
+.stripe {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 2rem;
+  scroll-margin-top: var(--nav-h-small);
+}
+
+@each $name, $bg in $stripe-bg {
+  .#{$name} {
+    background: #{$bg};
+    color: var(--cream);
+  }
+}
+
+h1 {
+  font-size: clamp-fluid(2rem, calc(3vw + 1rem), 3.5rem);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+:focus-visible {
+  @include focus-ring(mix($gold, white, 85%));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.carousel {
+  position: relative;
+  width: min(90%, 900px);
+  margin: 0 auto;
+  overflow: hidden;
+}
+.slide {
+  display: none;
+}
+.slide img {
+  width: 100%;
+  height: 32rem;
+  object-fit: cover;
+}
+
+/* Prev/Next buttons */
+// http://w3schools.com/howto/howto_js_slideshow.asp
+.carousel .prev,
+.carousel .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.5rem 0.8rem;
+  font-size: 2rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+.carousel .prev {
+  left: 0.5rem;
+}
+.carousel .next {
+  right: 0.5rem;
+}
+.carousel .prev:hover,
+.carousel .next:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+// ** highlights **
+.highlights {
+  max-width: 1000px;
+  margin: 2rem auto;
+  column-width: 300px;
+  column-gap: 1.5rem;
+}
+
+.highlight-item {
+  break-inside: avoid; /* keep cards from splitting between columns */
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background: var(--espresso);
+  border-radius: 8px;
+  color: var(--cream);
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--black);
+  border: 2px solid var(--gold);
+}
+
+.icon i {
+  font-size: 1.5rem;
+  color: var(--gold);
+}
+
+.highlight-item h3 {
+  margin: 10px 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--cream);
+}
+
+.highlight-item p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.s4 {
+  @include fixed-bg("../assets/mountain.jpg");
+  color: var(--cream);
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+/* --- Gallery grid --- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: zoom-in;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.gallery-grid img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* --- Modal / Lightbox --- */
+
+.hidden {
+  display: none !important;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(2px);
+  z-index: 999;
+}
+
+/* Centered modal card */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+}
+
+.modal > * {
+  /* the panel itself */
+  background: rgba(20, 20, 20, 0.92);
+  border: 1px solid var(--gold, #c9a76a);
+  border-radius: 16px;
+  width: min(92vw, 860px);
+  max-height: 90vh;
+  overflow: auto;
+  padding: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* Close button */
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2rem;
+  line-height: 1;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border-radius: 999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-modal:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* Header + image */
+.lb-header h2 {
+  margin: 0 0 6px;
+  color: var(--cream, #efe7db);
+}
+
+.lb-subtitle {
+  margin: 0 0 10px;
+  color: #cfcfcf;
+  line-height: 1.4;
+}
+
+#lightbox-img {
+  max-width: 100%;
+  max-height: 70vh;
+  border-radius: 12px;
+  object-fit: contain;
+  display: block;
+  margin-top: 8px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #111;
+  color: var(--cream, #efe7db);
+  border-top: 1px solid var(--border, #333);
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-links a {
+  color: var(--cream, #efe7db);
+  font-size: 1.2rem;
+  transition: color 0.25s ease;
+}
+
+.social-links a:hover,
+.social-links a:focus-visible {
+  color: var(--gold, #c9a76a);
+}

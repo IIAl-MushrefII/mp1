@@ -1,13 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MP1</title>
-    </head>
-    <body>
-        <h1>Hello World! Welcome to MP1!</h1>
-        <img src="assets/image.jpg">
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MP1</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Raleway:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar" id="navbar">
+      <a class="logo" href="#home">Al-Waleed</a>
+      <ul class="navbar-list" id="menu">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#gallery" class="nav-link">Gallery</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#photos" class="nav-link">Photos</a></li>
+      </ul>
+      <!-- simple reading position indicator -->
+      <div class="progress" id="progress"></div>
+    </nav>
+
+    <section id="home" class="stripe s1">
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        playsinline
+        loop
+        preload="metadata"
+      >
+        <source src="assets/coffee.mp4" type="video/mp4" />
+        Sorry, your browser doesn’t support embedded videos.
+      </video>
+    </section>
+
+    <section id="gallery" class="stripe s2">
+      <h1>Gallery</h1>
+      <div class="carousel" id="carousel">
+        <div class="slide">
+          <img src="assets/coffee1.jpg" alt="Espresso" />
+        </div>
+        <div class="slide">
+          <img src="assets/coffee2.jpg" alt="Latte art" />
+        </div>
+        <div class="slide">
+          <img src="assets/coffee3.jpg" alt="Cappuccino" />
+        </div>
+
+        <a class="prev">&#10094;</a>
+        <a class="next">&#10095;</a>
+      </div>
+    </section>
+    <section id="about" class="stripe s3">
+      <h1>Why Choose Us</h1>
+      <div class="highlights">
+        <div class="highlight-item">
+          <div class="icon"><i class="fa-solid fa-mug-hot"></i></div>
+          <h3>Freshly Brewed</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
+
+        <div class="highlight-item">
+          <div class="icon"><i class="fa-solid fa-leaf"></i></div>
+          <h3>Organic Beans</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
+
+        <div class="highlight-item">
+          <div class="icon"><i class="fa-solid fa-gift"></i></div>
+          <h3>Special Offers</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="photos" class="stripe s4">
+      <h1>Photos</h1>
+
+      <!-- Grid -->
+      <div class="gallery-grid">
+        <!-- tip: alt text is important for accessibility/SEO -->
+        <img src="assets/1.jpg" alt="Coffee photo 1" loading="lazy" />
+        <img src="assets/2.jpg" alt="Coffee photo 2" loading="lazy" />
+        <img src="assets/3.jpg" alt="Coffee photo 3" loading="lazy" />
+        <img src="assets/4.jpg" alt="Coffee photo 4" loading="lazy" />
+        <img src="assets/5.jpg" alt="Coffee photo 5" loading="lazy" />
+        <img src="assets/6.jpg" alt="Coffee photo 6" loading="lazy" />
+        <img src="assets/7.jpg" alt="Coffee photo 7" loading="lazy" />
+        <img src="assets/8.jpg" alt="Coffee photo 8" loading="lazy" />
+        <img src="assets/9.jpg" alt="Coffee photo 9" loading="lazy" />
+        <img src="assets/10.jpg" alt="Coffee photo 10" loading="lazy" />
+        <img src="assets/11.jpg" alt="Coffee photo 11" loading="lazy" />
+        <img src="assets/12.jpg" alt="Coffee photo 12" loading="lazy" />
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>© 2025 Al-Waleed</p>
+      <div class="social-links">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+    </footer>
+    <!-- Modal / Lightbox -->
+    <div class="modal hidden">
+      <button class="close-modal" aria-label="Close">&times;</button>
+      <header class="lb-header">
+        <h2 id="lb-title">Coffee</h2>
+        <p class="lb-subtitle">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+          posuere, lacus vitae vulputate porttitor, nunc urna elementum leo.
+        </p>
+      </header>
+      <img id="lightbox-img" alt="" />
+    </div>
+
+    <div class="overlay hidden"></div>
+
+    <script src="js/main.js"></script>
+  </body>
 </html>
