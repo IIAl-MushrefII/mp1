@@ -275,6 +275,7 @@ html {
   width: 100%;
   height: 32rem;
   object-fit: cover;
+  animation: fadeIn 1s ease-in;
 }
 
 /* Prev/Next buttons */
@@ -495,11 +496,4 @@ html {
   to {
     opacity: 1;
   }
-}
-
-.modal {
-  animation: fadeIn 200ms ease;
-}
-.overlay {
-  animation: fadeIn 200ms ease;
 }
