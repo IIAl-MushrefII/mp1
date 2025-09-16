@@ -489,6 +489,7 @@ html {
   color: var(--gold, #c9a76a);
 }
 
+// https://stackoverflow.com/questions/11660710/css-transition-fade-in
 @keyframes fadeIn {
   from {
     opacity: 0;
