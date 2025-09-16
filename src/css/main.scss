@@ -487,3 +487,19 @@ html {
 .social-links a:focus-visible {
   color: var(--gold, #c9a76a);
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  animation: fadeIn 200ms ease;
+}
+.overlay {
+  animation: fadeIn 200ms ease;
+}
